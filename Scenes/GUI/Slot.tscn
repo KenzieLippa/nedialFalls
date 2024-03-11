@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu003h3xoi7ok"]
+
+[ext_resource type="Texture2D" uid="uid://bat8w141qgy1h" path="res://Sprites/UI/UIBoxUnpressed.png" id="1_714ti"]
+[ext_resource type="Script" path="res://Scenes/GUI/Slot.gd" id="1_wg1jv"]
+
+[node name="Slot" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(256, 256)
+offset_right = 256.0
+offset_bottom = 256.0
+script = ExtResource("1_wg1jv")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_714ti")
+centered = false
+hframes = 2
+frame = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0

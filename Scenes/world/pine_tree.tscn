@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d04k63snnyi8t"]
+
+[ext_resource type="PackedScene" uid="uid://dr0bn5rudeccs" path="res://Scenes/world/parentTree.tscn" id="1_odcnn"]
+[ext_resource type="Texture2D" uid="uid://s7k7odw4hj6g" path="res://Sprites/Plants/pineTreeBottom.png" id="2_jwuf5"]
+[ext_resource type="Texture2D" uid="uid://c3xl0qemda0ax" path="res://Sprites/Plants/pineTreeTop.png" id="3_ryp46"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lm4lt"]
+resource_local_to_scene = true
+radius = 105.0
+height = 210.0
+
+[node name="OakTreeWhole" instance=ExtResource("1_odcnn")]
+
+[node name="OakTree" parent="." index="0"]
+texture = ExtResource("2_jwuf5")
+
+[node name="oarkTreeTop" parent="OakTree" index="0"]
+texture = ExtResource("3_ryp46")
+
+[node name="TreeCut" parent="CutDown" index="0"]
+shape = SubResource("CapsuleShape2D_lm4lt")

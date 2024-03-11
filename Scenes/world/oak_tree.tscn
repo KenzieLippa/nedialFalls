@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b418usnt6opu6"]
+
+[ext_resource type="PackedScene" uid="uid://bbg7kqj844fni" path="res://Scenes/world/oak_tree_whole.tscn" id="1_6y74a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pgwb"]
+resource_local_to_scene = true
+radius = 105.0
+height = 210.0
+
+[node name="OakTreeWhole" instance=ExtResource("1_6y74a")]
+
+[node name="TreeCut" parent="CutDown" index="0"]
+shape = SubResource("CapsuleShape2D_2pgwb")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmswx8u6tp14d"]
+
+[ext_resource type="PackedScene" uid="uid://oc4pgwk2bknf" path="res://Scenes/Items/CollectableParent.tscn" id="1_0vveh"]
+[ext_resource type="Resource" uid="uid://pxlbgudtvb4h" path="res://Scripts/InventoryAcorn.tres" id="2_fu7js"]
+[ext_resource type="Texture2D" uid="uid://dnooywkesei6u" path="res://Sprites/Items/Acorn.png" id="2_k7lyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0o4g"]
+resource_local_to_scene = true
+size = Vector2(78, 89)
+
+[node name="Acorn" instance=ExtResource("1_0vveh")]
+itemRes = ExtResource("2_fu7js")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(2, -6.5)
+shape = SubResource("RectangleShape2D_u0o4g")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_k7lyk")

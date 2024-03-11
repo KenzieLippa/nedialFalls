@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dglm3y3iq53s1"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryItem.gd" id="1_7ue22"]
+[ext_resource type="Texture2D" uid="uid://bw0gld6i3aumt" path="res://Sprites/Items/Axe.png" id="2_ls6rv"]
+
+[resource]
+script = ExtResource("1_7ue22")
+name = "Axe"
+texture = ExtResource("2_ls6rv")
+maxPerSlot = 1

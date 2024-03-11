@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://oxtmnh4mj8xg"]
+
+[ext_resource type="Texture2D" uid="uid://cmmggy08px7wg" path="res://Sprites/Plants/BackgroundTree.png" id="1_0y7o7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd66f"]
+radius = 64.0
+height = 140.0
+
+[node name="BackgroundTree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9, -353)
+texture = ExtResource("1_0y7o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -35)
+shape = SubResource("CapsuleShape2D_cd66f")

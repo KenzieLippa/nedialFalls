@@ -1,0 +1,9 @@
+res://Scenes/Test.tscn
+res://Scripts/InventoryAcorn.tres
+res://Scripts/Inventory.gd
+res://Scripts/playerInventory.tres
+res://Scenes/world/oak_tree_whole.gd
+res://Scenes/Items/axe.tscn
+res://Scripts/HotbarSlot.tscn
+res://Scripts/hotbar.tscn
+res://Scenes/GUI/inventory_gui.tscn

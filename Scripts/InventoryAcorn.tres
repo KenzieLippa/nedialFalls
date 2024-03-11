@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://pxlbgudtvb4h"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryItem.gd" id="1_73yh4"]
+[ext_resource type="Texture2D" uid="uid://dnooywkesei6u" path="res://Sprites/Items/Acorn.png" id="2_ndvb2"]
+
+[resource]
+script = ExtResource("1_73yh4")
+name = "Acorn"
+texture = ExtResource("2_ndvb2")
+maxPerSlot = 10
