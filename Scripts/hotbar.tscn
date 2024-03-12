@@ -1,33 +1,33 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfs8r3bxd8bpw"]
 
 [ext_resource type="Script" path="res://Scripts/hotbar.gd" id="1_babjm"]
-[ext_resource type="PackedScene" uid="uid://conxtfa6dbeih" path="res://Scripts/HotbarSlot.tscn" id="1_v08hn"]
+[ext_resource type="PackedScene" uid="uid://cu003h3xoi7ok" path="res://Scenes/GUI/Slot.tscn" id="1_f1gwi"]
 
 [node name="Hotbar" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_babjm")
 
-[node name="Slot" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2
 
-[node name="Slot2" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot2" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2
 
-[node name="Slot3" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot3" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2
 
-[node name="Slot4" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot4" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2
 
-[node name="Slot5" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot5" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2
 
-[node name="Slot6" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot6" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2
 
-[node name="Slot7" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot7" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2
 
-[node name="Slot8" parent="." instance=ExtResource("1_v08hn")]
+[node name="Slot8" parent="." instance=ExtResource("1_f1gwi")]
 layout_mode = 2

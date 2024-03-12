@@ -4,10 +4,12 @@ extends Resource
 class_name Inventory
 
 signal updated
-
+const InventorySlot = preload("res://Scripts/InventorySlot.gd")
 @export var slots: Array[InventorySlot]
+#i dont think im using this currently
+#@export var hotbarSlots: Array[InventorySlot]
 
-func insert(item : InventoryItem):
+func insert(item : InventoryItem, slotType):
 	#garbage method
 	#for slot in slots:
 		##check if in slot
@@ -33,7 +35,7 @@ func insert(item : InventoryItem):
 			#slots[i].amount = 1
 			#updated.emit()
 			#return
-	var itemSlots = slots.filter(func(slot):return slot.item == item && slot.amount < slot.item.maxPerSlot)
+	var itemSlots = slotType.filter(func(slot):return slot.item == item && slot.amount < slot.item.maxPerSlot)
 	if !itemSlots.is_empty():
 		itemSlots[0].amount +=1
 	else:
@@ -44,15 +46,15 @@ func insert(item : InventoryItem):
 			
 	updated.emit()
 
-func removeSlot(inventorySlot):
-	var index = slots.find(inventorySlot)
+func removeSlot(inventorySlot, slotType):
+	var index = slotType.find(inventorySlot)
 	if index < 0: return #not there
 	
-	slots[index] = InventorySlot.new()
+	slotType[index] = InventorySlot.new()
 	updated.emit()
 	
-func insertSlot(index, inventorySlot):
+func insertSlot(index, inventorySlot, slotType):
 	#var oldIndex = slots.find(inventorySlot)
 	#removeItemAtIndex(oldIndex)
-	slots[index] = inventorySlot
+	slotType[index] = inventorySlot
 	updated.emit()

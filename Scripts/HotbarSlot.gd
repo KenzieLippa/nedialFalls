@@ -7,11 +7,11 @@ extends Button
 func update_to_slot(slot):
 	if !slot.item:
 		itemStackGui.visible = false
-		background.frame = 1
+		#background.frame = 1
 		return
 	
 	itemStackGui.inventorySlot = slot
 	itemStackGui.update()
 	itemStackGui.visible = true
 	
-	background.frame = 0
+	#background.frame = 0

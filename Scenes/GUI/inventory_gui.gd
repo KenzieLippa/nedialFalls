@@ -3,19 +3,24 @@ extends Control
 signal opened
 signal closed
 var isOpen = false
+var selected_button: Button = null
 
 #preload the inventory, can load a resource in multiple places
 @onready var inventory: Inventory = preload("res://Scripts/playerInventory.tres")
 
 @onready var itemStackGuiClass = preload("res://Scenes/Items/ItemStackGUI.tscn")
-@onready var hotbar_slots = $NinePatchRect/HotbarSlots.get_children()
+@onready var hotbar_slots = $Hotbar.get_children()
+
+#@onready var hotbar_slots = $NinePatchRect/HotbarSlots.get_children()
+@onready var inventory_window = $InventoryWindow
 
 #get all the children slots
-@onready var slots: Array = hotbar_slots + $NinePatchRect/GridContainer.get_children()
+@onready var slots: Array = hotbar_slots + $InventoryWindow/GridContainer.get_children()
 
 var itemInHand: ItemStackGui
 var oldIndex: int = -1
 var locked = false
+var i : int
 
 func _ready():
 	connectSlots()
@@ -46,12 +51,12 @@ func update():
 		itemStackGui.inventorySlot = inventorySlot
 		itemStackGui.update()
 func open():
-	visible = true
+	inventory_window.visible = true
 	isOpen = true
 	opened.emit()
 	
 func close():
-	visible = false
+	inventory_window.visible = false
 	isOpen = false
 	closed.emit()
 	
@@ -60,6 +65,13 @@ func close():
 #recieve button signal want to figure out which button cliccked
 func onSlotClicked(slot):
 	if locked: return
+	#see if our current selected button is the selected button
+	if selected_button != slot and selected_button != null:
+		#deselect old button
+		selected_button.deselect()
+	#select new button
+	selected_button = slot
+	selected_button.selected()
 	if slot.isEmpty():
 		if !itemInHand: return
 		

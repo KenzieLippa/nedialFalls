@@ -4,5 +4,5 @@ extends Area2D
 #so that we can tie it to its resource
 
 func collect(inventory: Inventory):
-	inventory.insert(itemRes)
+	inventory.insert(itemRes, inventory.slots)
 	queue_free()

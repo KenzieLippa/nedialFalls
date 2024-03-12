@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyygiadykrde8"]
+[gd_scene load_steps=13 format=3 uid="uid://dyygiadykrde8"]
 
 [ext_resource type="PackedScene" uid="uid://jwl07atdlxis" path="res://Scenes/TileMaps/BasicGround.tscn" id="1_y6ixy"]
 [ext_resource type="PackedScene" uid="uid://cl1qlexkdxwqr" path="res://Scenes/Player/player.tscn" id="2_cdlqc"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cnagahn5mbxe0" path="res://Scenes/GUI/inventory_gui.tscn" id="10_7gby8"]
 [ext_resource type="Script" path="res://Scenes/GUI.gd" id="10_gfm1o"]
 [ext_resource type="PackedScene" uid="uid://dmswx8u6tp14d" path="res://Scenes/Items/acorn.tscn" id="12_ad46a"]
-[ext_resource type="PackedScene" uid="uid://bfs8r3bxd8bpw" path="res://Scripts/hotbar.tscn" id="12_rityy"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -84,19 +83,6 @@ offset_right = 1099.5
 offset_bottom = 483.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Hotbar" parent="GUI" instance=ExtResource("12_rityy")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1038.0
-offset_top = -256.0
-offset_right = 1038.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="Acorn" parent="." instance=ExtResource("12_ad46a")]
 position = Vector2(-391, 1588)

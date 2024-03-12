@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnagahn5mbxe0"]
+[gd_scene load_steps=6 format=3 uid="uid://cnagahn5mbxe0"]
 
 [ext_resource type="Texture2D" uid="uid://ba7dxifqd3ste" path="res://Sprites/UI/SmileTextbox.png" id="1_8e3g2"]
 [ext_resource type="Script" path="res://Scenes/GUI/inventory_gui.gd" id="1_ub1fj"]
 [ext_resource type="PackedScene" uid="uid://cu003h3xoi7ok" path="res://Scenes/GUI/Slot.tscn" id="2_qpilf"]
+[ext_resource type="Script" path="res://Scenes/GUI/Inventory.gd" id="3_3jcxa"]
+[ext_resource type="PackedScene" uid="uid://bfs8r3bxd8bpw" path="res://Scripts/hotbar.tscn" id="4_267e0"]
 
 [node name="InventoryGui" type="Control"]
 custom_minimum_size = Vector2(2199, 967)
@@ -12,7 +14,7 @@ offset_right = 2199.0
 offset_bottom = 967.0
 script = ExtResource("1_ub1fj")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="InventoryWindow" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 2211.0
 offset_bottom = 944.0
@@ -22,96 +24,97 @@ patch_margin_top = 29
 patch_margin_right = 30
 patch_margin_bottom = 32
 
-[node name="HotbarSlots" type="HBoxContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 78.0
-offset_right = 2147.0
-offset_bottom = 334.0
-
-[node name="Slot" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="Slot2" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="Slot3" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="Slot4" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="Slot5" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="Slot6" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="Slot7" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="Slot8" parent="NinePatchRect/HotbarSlots" instance=ExtResource("2_qpilf")]
-layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+[node name="GridContainer" type="GridContainer" parent="InventoryWindow"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1033.5
-offset_top = -106.0
-offset_right = 1052.5
-offset_bottom = 706.0
+offset_left = -1032.5
+offset_top = -417.0
+offset_right = 1053.5
+offset_bottom = 395.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 8
+script = ExtResource("3_3jcxa")
 
-[node name="Slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot2" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot3" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot4" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot13" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot5" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot14" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot6" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot15" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot7" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot16" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot8" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot17" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot9" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot18" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot10" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot19" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot11" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot20" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot12" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot21" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot13" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot22" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot14" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot23" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot15" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
 
-[node name="Slot24" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qpilf")]
+[node name="Slot16" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
 layout_mode = 2
+
+[node name="Slot17" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Slot18" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Slot19" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Slot20" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Slot21" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Slot22" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Slot23" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Slot24" parent="InventoryWindow/GridContainer" instance=ExtResource("2_qpilf")]
+layout_mode = 2
+
+[node name="Hotbar" parent="." instance=ExtResource("4_267e0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 943.0
+offset_right = 2130.0
+offset_bottom = 1199.0
