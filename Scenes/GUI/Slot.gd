@@ -7,6 +7,7 @@ extends Button
 var itemStackGui : ItemStackGui
 var index : int
 var parent_node = null #no parent by default
+var isSelected = false
 #get the parent in the ready function
 func _ready():
 	parent_node = get_parent()
@@ -53,6 +54,8 @@ func isHotbar():
 	
 func selected():
 	background.frame = 0
+	isSelected = true
 	
 func deselect():
 	background.frame = 1
+	isSelected = false

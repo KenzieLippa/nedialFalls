@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cis0fjtd427q1"]
+[gd_scene load_steps=3 format=3 uid="uid://cis0fjtd427q1"]
 
 [ext_resource type="Script" path="res://Scenes/Items/ItemStackGui.gd" id="1_v11a0"]
+[ext_resource type="PackedScene" uid="uid://dnki18wet5nv4" path="res://Scenes/GUI/item_info_box.tscn" id="2_rutn4"]
 
 [node name="Panel" type="Panel"]
 script = ExtResource("1_v11a0")
@@ -16,3 +17,14 @@ offset_bottom = 123.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "99"
+
+[node name="ItemInfoBox" parent="." instance=ExtResource("2_rutn4")]
+z_index = 1
+z_as_relative = false
+layout_mode = 1
+offset_left = -134.0
+offset_top = -308.0
+offset_right = -134.0
+offset_bottom = -308.0
+
+[editable path="ItemInfoBox"]

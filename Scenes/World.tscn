@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwerkrpyd6etf"]
+
+[ext_resource type="Script" path="res://Scenes/Test.gd" id="1_mtear"]
+[ext_resource type="PackedScene" uid="uid://boekd1lfk8atj" path="res://Scenes/testLevel.tscn" id="2_10rsf"]
+[ext_resource type="PackedScene" uid="uid://cl1qlexkdxwqr" path="res://Scenes/Items/player.tscn" id="3_0cytg"]
+[ext_resource type="Script" path="res://Scenes/GUI.gd" id="4_05n7y"]
+[ext_resource type="PackedScene" uid="uid://cnagahn5mbxe0" path="res://Scenes/GUI/inventory_gui.tscn" id="5_rlvn7"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_mtear")
+
+[node name="Player" parent="." instance=ExtResource("3_0cytg")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("4_05n7y")
+
+[node name="InventoryGui" parent="GUI" instance=ExtResource("5_rlvn7")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1099.5
+offset_top = -483.5
+offset_right = 1099.5
+offset_bottom = 483.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Test" parent="." instance=ExtResource("2_10rsf")]
+
+[connection signal="closed" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_closed"]
+[connection signal="opened" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_opened"]
+
+[editable path="Test"]

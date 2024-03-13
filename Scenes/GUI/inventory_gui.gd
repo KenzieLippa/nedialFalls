@@ -4,6 +4,7 @@ signal opened
 signal closed
 var isOpen = false
 var selected_button: Button = null
+var previous_slot: Button = null
 
 #preload the inventory, can load a resource in multiple places
 @onready var inventory: Inventory = preload("res://Scripts/playerInventory.tres")
@@ -36,6 +37,12 @@ func connectSlots():
 		#to add input we need to bind to callable
 		callable = callable.bind(slot)
 		slot.pressed.connect(callable)
+		var buttonEnt = Callable(buttonEntered)
+		buttonEnt = buttonEnt.bind(slot)
+		slot.mouse_entered.connect(buttonEnt)
+		var buttonExt = Callable(buttonExited)
+		buttonExt = buttonExt.bind(slot)
+		slot.mouse_exited.connect(buttonExt)
 
 func update():
 	#to prevent issues with out of bounds
@@ -50,6 +57,7 @@ func update():
 			slots[i].insert(itemStackGui) #insert into scene tree after instantiated
 		itemStackGui.inventorySlot = inventorySlot
 		itemStackGui.update()
+		
 func open():
 	inventory_window.visible = true
 	isOpen = true
@@ -60,7 +68,15 @@ func close():
 	isOpen = false
 	closed.emit()
 	
-
+func buttonEntered(slot):
+	if slot.itemStackGui != null and !itemInHand:
+		var infoBox = slot.itemStackGui.item_info_box
+		infoBox.visible = true
+		
+func buttonExited(slot):
+	if slot.itemStackGui != null:
+		var infoBox = slot.itemStackGui.item_info_box
+		infoBox.visible = false
 
 #recieve button signal want to figure out which button cliccked
 func onSlotClicked(slot):
@@ -68,24 +84,33 @@ func onSlotClicked(slot):
 	#see if our current selected button is the selected button
 	if selected_button != slot and selected_button != null:
 		#deselect old button
+		
 		selected_button.deselect()
 	#select new button
+	previous_slot = selected_button
 	selected_button = slot
 	selected_button.selected()
+	if previous_slot == selected_button: pass
+	if !itemInHand and !slot.isEmpty():
+		takeItemFromSlot(slot)
+		return
+	#print("this is true")
 	if slot.isEmpty():
 		if !itemInHand: return
 		
 		insertItemInSlot(slot)
 		return
-	if !itemInHand:
-		takeItemFromSlot(slot)
-		return
+	if !itemInHand:return
 	if slot.itemStackGui.inventorySlot.item.name == itemInHand.inventorySlot.item.name:
 		stackItems(slot)
 		return
 	swapItems(slot)
+
 	
 func takeItemFromSlot(slot):
+	#try running this to see if we can get this to take the label away
+	
+	buttonExited(slot)
 	itemInHand = slot.takeItem()
 	add_child(itemInHand)
 	updateItemInHand()
@@ -97,7 +122,7 @@ func insertItemInSlot(slot):
 	remove_child(itemInHand)
 	itemInHand = null
 	slot.insert(item)
-	
+	buttonEntered(slot)
 	oldIndex = -1
 
 func swapItems(slot):

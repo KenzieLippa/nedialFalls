@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_73yh4")
 name = "Acorn"
+description = "Small squirel crack, can grow trees as well."
 texture = ExtResource("2_ndvb2")
-maxPerSlot = 10
+maxPerSlot = 99

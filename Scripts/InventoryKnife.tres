@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_jfxbl")
 name = "Knife"
+description = "sharp and pointy. Don't stick yourself..."
 texture = ExtResource("2_0ydtr")
 maxPerSlot = 1

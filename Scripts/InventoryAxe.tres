@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_7ue22")
 name = "Axe"
+description = "been known to chop wood, also sometimes legs..."
 texture = ExtResource("2_ls6rv")
 maxPerSlot = 1
