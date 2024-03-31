@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djjstkc26k8x4"]
+
+[ext_resource type="Script" path="res://Scenes/world/door.gd" id="1_cqhp6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whowr"]
+size = Vector2(128, 256)
+
+[node name="Door" type="Area2D" groups=["doors"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_cqhp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_whowr")
+
+[node name="Down" type="RayCast2D" parent="."]
+position = Vector2(0, -127)
+target_position = Vector2(0, 261)

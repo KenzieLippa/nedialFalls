@@ -1,8 +1,9 @@
-res://Scenes/GUI
+res://Scenes/TileMaps
+res://Scenes/GUI/Dialogue
+res://Scenes/world
 res://Scenes
+res://
+res://Scenes/GUI
 res://Scripts
 res://Scenes/Items
-res://Scenes/world
 res://Sprites/Player
-res://Scenes/TileMaps
-res://

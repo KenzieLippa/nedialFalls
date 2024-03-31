@@ -8,6 +8,7 @@ const InventorySlot = preload("res://Scripts/InventorySlot.gd")
 @export var slots: Array[InventorySlot]
 #i dont think im using this currently
 #@export var hotbarSlots: Array[InventorySlot]
+var isSelected = false
 
 func insert(item : InventoryItem, slotType):
 	#garbage method
@@ -58,3 +59,5 @@ func insertSlot(index, inventorySlot, slotType):
 	#removeItemAtIndex(oldIndex)
 	slotType[index] = inventorySlot
 	updated.emit()
+
+

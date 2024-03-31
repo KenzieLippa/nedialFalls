@@ -7,7 +7,7 @@ var selected_button: Button = null
 var previous_slot: Button = null
 
 #preload the inventory, can load a resource in multiple places
-@onready var inventory: Inventory = preload("res://Scripts/playerInventory.tres")
+@onready var inventory: Inventory = MainInstances.inventory
 
 @onready var itemStackGuiClass = preload("res://Scenes/Items/ItemStackGUI.tscn")
 @onready var hotbar_slots = $Hotbar.get_children()
@@ -89,22 +89,27 @@ func onSlotClicked(slot):
 	#select new button
 	previous_slot = selected_button
 	selected_button = slot
-	selected_button.selected()
-	if previous_slot == selected_button: pass
-	if !itemInHand and !slot.isEmpty():
-		takeItemFromSlot(slot)
-		return
-	#print("this is true")
-	if slot.isEmpty():
-		if !itemInHand: return
-		
-		insertItemInSlot(slot)
-		return
-	if !itemInHand:return
-	if slot.itemStackGui.inventorySlot.item.name == itemInHand.inventorySlot.item.name:
-		stackItems(slot)
-		return
-	swapItems(slot)
+	selected_button.selected(slot.index)
+	
+	#print(slot.index)
+	#if inventory.slots[slot.index].item != null:
+		#print(inventory.slots[slot.index].item.name)
+	if isOpen:
+		if previous_slot == selected_button: pass
+		if !itemInHand and !slot.isEmpty():
+			takeItemFromSlot(slot)
+			return
+		#print("this is true")
+		if slot.isEmpty():
+			if !itemInHand: return
+			
+			insertItemInSlot(slot)
+			return
+		if !itemInHand:return
+		if slot.itemStackGui.inventorySlot.item.name == itemInHand.inventorySlot.item.name:
+			stackItems(slot)
+			return
+		swapItems(slot)
 
 	
 func takeItemFromSlot(slot):

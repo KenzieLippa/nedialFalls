@@ -1,15 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwerkrpyd6etf"]
+[gd_scene load_steps=9 format=3 uid="uid://dwerkrpyd6etf"]
 
 [ext_resource type="Script" path="res://Scenes/Test.gd" id="1_mtear"]
 [ext_resource type="PackedScene" uid="uid://boekd1lfk8atj" path="res://Scenes/testLevel.tscn" id="2_10rsf"]
-[ext_resource type="PackedScene" uid="uid://cl1qlexkdxwqr" path="res://Scenes/Items/player.tscn" id="3_0cytg"]
+[ext_resource type="PackedScene" uid="uid://cl1qlexkdxwqr" path="res://Scenes/Player/player.tscn" id="3_0cytg"]
 [ext_resource type="Script" path="res://Scenes/GUI.gd" id="4_05n7y"]
+[ext_resource type="PackedScene" uid="uid://bjf53w7lel4ey" path="res://Scenes/GUI/Dialogue/internal_dialogue.tscn" id="5_bavqv"]
 [ext_resource type="PackedScene" uid="uid://cnagahn5mbxe0" path="res://Scenes/GUI/inventory_gui.tscn" id="5_rlvn7"]
+[ext_resource type="Script" path="res://Scenes/InfoBoxes.gd" id="5_xbct0"]
+[ext_resource type="PackedScene" uid="uid://c2ptfiyhygx1b" path="res://Scenes/Items/axe.tscn" id="8_wr47u"]
 
 [node name="World" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_mtear")
 
 [node name="Player" parent="." instance=ExtResource("3_0cytg")]
+process_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -31,9 +37,19 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="InfoBoxes" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("5_xbct0")
+
+[node name="InternalDialogue" parent="InfoBoxes" instance=ExtResource("5_bavqv")]
+visible = false
+
 [node name="Test" parent="." instance=ExtResource("2_10rsf")]
+
+[node name="Axe" parent="." instance=ExtResource("8_wr47u")]
+position = Vector2(-170, 438)
 
 [connection signal="closed" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_opened"]
-
-[editable path="Test"]
+[connection signal="closed" from="InfoBoxes/InternalDialogue" to="InfoBoxes" method="_on_internal_dialogue_closed"]
+[connection signal="opened" from="InfoBoxes/InternalDialogue" to="InfoBoxes" method="_on_internal_dialogue_opened"]

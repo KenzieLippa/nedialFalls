@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Test.gd" id="1_0k6ba"]
 [ext_resource type="PackedScene" uid="uid://jwl07atdlxis" path="res://Scenes/TileMaps/BasicGround.tscn" id="1_y6ixy"]
-[ext_resource type="PackedScene" uid="uid://cl1qlexkdxwqr" path="res://Scenes/Items/player.tscn" id="2_cdlqc"]
+[ext_resource type="PackedScene" uid="uid://cl1qlexkdxwqr" path="res://Scenes/Player/player.tscn" id="2_cdlqc"]
 [ext_resource type="PackedScene" uid="uid://oxtmnh4mj8xg" path="res://Scenes/world/BackgroundTree.tscn" id="3_2ydra"]
 [ext_resource type="PackedScene" uid="uid://ck5f7m0p52nax" path="res://Scenes/world/bush.tscn" id="4_mjujg"]
 [ext_resource type="PackedScene" uid="uid://bbg7kqj844fni" path="res://Scenes/world/oak_tree_whole.tscn" id="5_tnjjy"]

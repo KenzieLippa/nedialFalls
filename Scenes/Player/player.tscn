@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://clexpogr6be47" path="res://Scripts/playerInventory.tres" id="2_3jth3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apicv"]
-radius = 21.0
-height = 240.0
+radius = 16.0
+height = 74.0
 
 [sub_resource type="Animation" id="Animation_d3q3r"]
 length = 0.001
@@ -277,7 +277,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bggmc"]
-radius = 119.0
+radius = 122.004
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vvalk"]
 radius = 34.0
@@ -285,6 +285,8 @@ height = 106.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, 0)
+collision_layer = 7
+collision_mask = 3
 script = ExtResource("1_cg3it")
 inventory = ExtResource("2_3jth3")
 
@@ -295,7 +297,9 @@ hframes = 18
 vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -111)
+visible = false
+position = Vector2(1, -8)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_apicv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -303,10 +307,12 @@ libraries = {
 "": SubResource("AnimationLibrary_0rwhe")
 }
 
-[node name="treeDetector" type="Area2D" parent="."]
+[node name="Interact" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="treeDetector"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+position = Vector2(-1, -5)
 shape = SubResource("CircleShape2D_bggmc")
 
 [node name="Pickups" type="Area2D" parent="."]

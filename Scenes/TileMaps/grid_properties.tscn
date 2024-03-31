@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpsqamgrqpuop"]
+
+[ext_resource type="Script" path="res://GridProperties.gd" id="2_y2xow"]
+
+[sub_resource type="TileSet" id="TileSet_oeqkg"]
+resource_local_to_scene = true
+tile_size = Vector2i(128, 128)
+
+[node name="GridProperties" type="TileMap"]
+tile_set = SubResource("TileSet_oeqkg")
+rendering_quadrant_size = 128
+format = 2
+script = ExtResource("2_y2xow")

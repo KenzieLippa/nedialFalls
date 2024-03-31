@@ -1,8 +1,9 @@
 extends CharacterBody2D
-
+class_name Player
 const SPEED := 700.0
 @onready var animation_player = $AnimationPlayer
-@onready var tree_detector = $treeDetector
+@onready var interact = $Interact
+
 
 @export var inventory: Inventory
 enum STATE {
@@ -12,10 +13,16 @@ enum STATE {
 
 func _ready():
 	pass
+
+func _enter_tree():
+	#set the main instances to be player
+	MainInstances.player = self
 	
 func _physics_process(delta):
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * SPEED
+	#if inventory.slots[MainInstances.selectedSlot].item != null:
+		#print(inventory.slots[MainInstances.selectedSlot].item.name)
 	move_and_slide()
 	if is_moving():
 		animate_walk()
@@ -23,6 +30,12 @@ func _physics_process(delta):
 		animate_idle()
 	if Input.is_action_just_pressed("debugChop"):
 		chop()
+	if Input.is_action_just_pressed("Interact"):
+		if inventory.slots[MainInstances.selectedSlot].item != null:
+			if inventory.slots[MainInstances.selectedSlot].item.name == "Axe":
+				chop()
+				print("this is an axe!")
+		interactInfo()
 func is_moving():
 	#tell whether we walking or not
 	return velocity != Vector2.ZERO
@@ -49,13 +62,24 @@ func animate_idle():
 		"walkUp": animation_player.play("idleUp")
 		"walkDown": animation_player.play("idleDown")
 func chop():
-	var trees_in_range = tree_detector.get_overlapping_bodies()
+	var trees_in_range = interact.get_overlapping_bodies()
 	for area in trees_in_range:
 		if area.is_in_group("tree"):
 			print("tree found!")
 			area.on_chop()
 
-
+func interactInfo():
+	if MainInstances.itemBox.infoEnter == true:
+		var info_in_range = interact.get_overlapping_areas()
+		for area in info_in_range:
+			#print("info found!")
+			if area.is_in_group("infoBox"):
+				#print("is in group!")
+				if MainInstances.itemBox.isOpen == false:
+					#print("is not open")
+					area._on_body_entered(area)
+	else:
+		print("not in range")
 
 func _on_pickups_area_entered(area):
 	if area.has_method("collect"):
