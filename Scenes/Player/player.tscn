@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cl1qlexkdxwqr"]
+[gd_scene load_steps=18 format=3 uid="uid://cl1qlexkdxwqr"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_cg3it"]
 [ext_resource type="Texture2D" uid="uid://so7ewjqj4so0" path="res://Sprites/Player/PlayerFrontAndSide.png" id="1_wx2ws"]
@@ -283,6 +283,9 @@ radius = 122.004
 radius = 34.0
 height = 106.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hasdp"]
+radius = 664.823
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, 0)
 collision_layer = 7
@@ -322,4 +325,11 @@ visible = false
 position = Vector2(1, -41)
 shape = SubResource("CapsuleShape2D_vvalk")
 
+[node name="CursorRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorRange"]
+shape = SubResource("CircleShape2D_hasdp")
+
 [connection signal="area_entered" from="Pickups" to="." method="_on_pickups_area_entered"]
+[connection signal="mouse_entered" from="CursorRange" to="." method="_on_cursor_range_mouse_entered"]
+[connection signal="mouse_exited" from="CursorRange" to="." method="_on_cursor_range_mouse_exited"]

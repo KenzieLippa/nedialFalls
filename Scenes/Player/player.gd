@@ -3,6 +3,7 @@ class_name Player
 const SPEED := 700.0
 @onready var animation_player = $AnimationPlayer
 @onready var interact = $Interact
+var cursorInRange = false
 
 
 @export var inventory: Inventory
@@ -65,7 +66,7 @@ func chop():
 	var trees_in_range = interact.get_overlapping_bodies()
 	for area in trees_in_range:
 		if area.is_in_group("tree"):
-			print("tree found!")
+			#print("tree found!")
 			area.on_chop()
 
 func interactInfo():
@@ -84,3 +85,14 @@ func interactInfo():
 func _on_pickups_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
+
+
+func _on_cursor_range_mouse_entered():
+	#print("entered the range")
+	cursorInRange = true
+	
+
+
+func _on_cursor_range_mouse_exited():
+	#print("exited the range")
+	cursorInRange = false

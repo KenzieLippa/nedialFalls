@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwerkrpyd6etf"]
+[gd_scene load_steps=11 format=3 uid="uid://dwerkrpyd6etf"]
 
 [ext_resource type="Script" path="res://Scenes/Test.gd" id="1_mtear"]
 [ext_resource type="PackedScene" uid="uid://boekd1lfk8atj" path="res://Scenes/testLevel.tscn" id="2_10rsf"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cnagahn5mbxe0" path="res://Scenes/GUI/inventory_gui.tscn" id="5_rlvn7"]
 [ext_resource type="Script" path="res://Scenes/InfoBoxes.gd" id="5_xbct0"]
 [ext_resource type="PackedScene" uid="uid://c2ptfiyhygx1b" path="res://Scenes/Items/axe.tscn" id="8_wr47u"]
+[ext_resource type="PackedScene" uid="uid://cqt2wij1ymdg3" path="res://Scenes/TileMaps/grid_cursor.tscn" id="9_s1ak2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4sgr"]
+size = Vector2(2202, 291)
 
 [node name="World" type="Node2D"]
 z_as_relative = false
@@ -35,7 +39,15 @@ offset_right = 1099.5
 offset_bottom = 483.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="GUI"]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GUI/Area2D"]
+position = Vector2(1314, 1323.5)
+shape = SubResource("RectangleShape2D_v4sgr")
 
 [node name="InfoBoxes" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -43,13 +55,18 @@ script = ExtResource("5_xbct0")
 
 [node name="InternalDialogue" parent="InfoBoxes" instance=ExtResource("5_bavqv")]
 visible = false
+mouse_filter = 2
 
 [node name="Test" parent="." instance=ExtResource("2_10rsf")]
 
 [node name="Axe" parent="." instance=ExtResource("8_wr47u")]
 position = Vector2(-170, 438)
 
+[node name="GridCursor" parent="." instance=ExtResource("9_s1ak2")]
+
 [connection signal="closed" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_opened"]
+[connection signal="mouse_entered" from="GUI/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="closed" from="InfoBoxes/InternalDialogue" to="InfoBoxes" method="_on_internal_dialogue_closed"]
 [connection signal="opened" from="InfoBoxes/InternalDialogue" to="InfoBoxes" method="_on_internal_dialogue_opened"]

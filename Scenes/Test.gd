@@ -5,10 +5,14 @@ class_name World
 var testRoom = preload("res://Scenes/inside.tscn").instantiate()
 @onready var internal_dialogue = $InfoBoxes/InternalDialogue
 var infoOpened = false
+@onready var grid_cursor = $GridCursor
+var overInventory = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#RedneringServer.set_default_clear_color(Color.BLACK)
 	Events.door_entered.connect(changeLevel)
+	MainInstances.gridCursor.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	#make sure not visible
 	internal_dialogue.visible = false
@@ -17,12 +21,23 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("changeRoom"):
 		changescene()
+	
+	if !overInventory:
+		if MainInstances.selectedSlot != -1 and MainInstances.inventory.slots[MainInstances.selectedSlot].item != null:
+			if MainInstances.inventory.slots[MainInstances.selectedSlot].item.canPlace == true:
+				MainInstances.mouseVisible()
+			else:
+				MainInstances.mouseInvisible()
+	else:
+			MainInstances.mouseInvisible()
+	
 	#not sure if this is the best way or not...
 	#if internal_dialogue.visible == true and Input.is_action_just_pressed("Interact"):
 		#unpause()
 		#internal_dialogue.visible = false
 		#
 
+			
 
 func changescene():
 	get_tree().root.add_child(testRoom)
@@ -51,3 +66,17 @@ func changeLevel(door):
 
 #func unpause():
 	#get_tree().paused = false
+
+
+func _on_area_2d_mouse_entered():
+	overInventory = true
+	MainInstances.mouseInvisible()
+	#print("mouse enters")
+	
+
+
+
+
+
+func _on_area_2d_mouse_exited():
+	overInventory = false

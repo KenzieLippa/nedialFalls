@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpsqamgrqpuop"]
+[gd_scene load_steps=5 format=3 uid="uid://dpsqamgrqpuop"]
 
+[ext_resource type="Texture2D" uid="uid://d3aws8h2nl15c" path="res://Sprites/Debug/debugTile.png" id="1_hvrll"]
 [ext_resource type="Script" path="res://GridProperties.gd" id="2_y2xow"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03aac"]
+texture = ExtResource("1_hvrll")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_oeqkg"]
-resource_local_to_scene = true
 tile_size = Vector2i(128, 128)
+sources/4 = SubResource("TileSetAtlasSource_03aac")
 
 [node name="GridProperties" type="TileMap"]
 tile_set = SubResource("TileSet_oeqkg")

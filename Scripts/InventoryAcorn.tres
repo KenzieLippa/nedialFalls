@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://pxlbgudtvb4h"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://pxlbgudtvb4h"]
 
 [ext_resource type="Script" path="res://Scripts/InventoryItem.gd" id="1_73yh4"]
+[ext_resource type="PackedScene" uid="uid://b418usnt6opu6" path="res://Scenes/world/oak_tree.tscn" id="1_bp14v"]
 [ext_resource type="Texture2D" uid="uid://dnooywkesei6u" path="res://Sprites/Items/Acorn.png" id="2_ndvb2"]
 
 [resource]
@@ -9,3 +10,9 @@ name = "Acorn"
 description = "Small squirel crack, can grow trees as well."
 texture = ExtResource("2_ndvb2")
 maxPerSlot = 99
+isPlant = true
+canPlace = true
+canPlant = true
+needsSoil = false
+isTool = false
+plantPath = ExtResource("1_bp14v")

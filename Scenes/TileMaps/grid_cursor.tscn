@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqt2wij1ymdg3"]
+
+[ext_resource type="Texture2D" uid="uid://bpocpd5a8jq3o" path="res://Sprites/UI/Cursor.png" id="1_rq0t1"]
+[ext_resource type="Script" path="res://GridCursor.gd" id="2_ar5p1"]
+
+[node name="GridCursor" type="Sprite2D"]
+texture = ExtResource("1_rq0t1")
+hframes = 2
+script = ExtResource("2_ar5p1")

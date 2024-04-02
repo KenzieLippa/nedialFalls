@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://boekd1lfk8atj"]
+[gd_scene load_steps=13 format=3 uid="uid://boekd1lfk8atj"]
 
 [ext_resource type="PackedScene" uid="uid://jwl07atdlxis" path="res://Scenes/TileMaps/BasicGround.tscn" id="1_021rt"]
 [ext_resource type="Script" path="res://Scenes/testLevel.gd" id="1_qqfim"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cbcoh743c77w4" path="res://Scenes/TileMaps/interior_tiles.tscn" id="10_sfb8c"]
 [ext_resource type="PackedScene" uid="uid://cw8fnjnvme4lw" path="res://Scenes/GUI/Dialogue/dialogue_interaction.tscn" id="11_2fg1h"]
 [ext_resource type="PackedScene" uid="uid://djjstkc26k8x4" path="res://Scenes/world/door.tscn" id="12_0hef6"]
+[ext_resource type="PackedScene" uid="uid://dpsqamgrqpuop" path="res://Scenes/TileMaps/grid_properties.tscn" id="12_4ikss"]
 [ext_resource type="PackedScene" uid="uid://dmswx8u6tp14d" path="res://Scenes/Items/acorn.tscn" id="12_fqsgl"]
 
 [node name="Test" type="Node2D"]
@@ -87,3 +88,8 @@ position = Vector2(775, 1163)
 [node name="Dialogue Interaction" parent="." instance=ExtResource("11_2fg1h")]
 position = Vector2(-422, 1033)
 infoText = "A very ugly bush... seems like theres mushrooms in it"
+
+[node name="GridProperties" parent="." instance=ExtResource("12_4ikss")]
+layer_0/tile_data = PackedInt32Array(131072, 4, 0, 131073, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 4, 0, 196613, 4, 0, 262152, 4, 0, 262153, 4, 0, 327688, 4, 0, 327689, 4, 0, 393224, 4, 0, 393225, 4, 0, 458761, 4, 0, 458760, 4, 0, 196608, 4, 0, 196609, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 4, 0, 131077, 4, 0, 131078, 4, 0, 196614, 4, 0, 262150, 4, 0, 262149, 4, 0, 262148, 4, 0, 262147, 4, 0, 262146, 4, 0, 262145, 4, 0, 262144, 4, 0, 327679, 4, 0, 262151, 4, 0, 327687, 4, 0, 327686, 4, 0, 327685, 4, 0, 393221, 4, 0, 393220, 4, 0, 393219, 4, 0, 393222, 4, 0, 393223, 4, 0, 393218, 4, 0, 393217, 4, 0, 393216, 4, 0, 327680, 4, 0, 327684, 4, 0, 327682, 4, 0, 327681, 4, 0, 393215, 4, 0, 458751, 4, 0, 524287, 4, 0, 589823, 4, 0, 524288, 4, 0, 524289, 4, 0, 524290, 4, 0, 524291, 4, 0, 458755, 4, 0, 458756, 4, 0, 458759, 4, 0, 458758, 4, 0, 458757, 4, 0, 589822, 4, 0, 524286, 4, 0, 458754, 4, 0, 458753, 4, 0, 458752, 4, 0, 524292, 4, 0, 524293, 4, 0, 524294, 4, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 327683, 4, 0)
+can_till = true
+is_active = true
