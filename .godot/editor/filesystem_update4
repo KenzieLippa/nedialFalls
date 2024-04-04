@@ -11,3 +11,5 @@ res://Scenes/Items/acorn.tscn
 res://Scripts/InventoryItem.gd
 res://Scripts/InventoryAcorn.tres
 res://Scenes/Player/player.gd
+res://Scenes/world/parentTree.tscn
+res://Scenes/world/pine_tree.tscn

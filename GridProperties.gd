@@ -73,7 +73,7 @@ func turn_into_tile(pos):
 				var selectedItem = MainInstances.inventory.slots[MainInstances.selectedSlot].item
 				if selectedItem:
 					if selectedItem.isPlant:
-						print("plant selected")
+						#print("plant selected")
 						if !selectedItem.needsSoil:
 							if selectedItem.plantPath != null:
 								create_plant(pos, cell, selectedItem.plantPath) #will need to fix up the grid properties so it reflects if its soil and then stores if that is the case

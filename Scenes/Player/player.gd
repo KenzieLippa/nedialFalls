@@ -79,8 +79,8 @@ func interactInfo():
 				if MainInstances.itemBox.isOpen == false:
 					#print("is not open")
 					area._on_body_entered(area)
-	else:
-		print("not in range")
+	#else:
+		#print("not in range")
 
 func _on_pickups_area_entered(area):
 	if area.has_method("collect"):
