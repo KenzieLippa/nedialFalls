@@ -12,13 +12,14 @@ script/source = "extends StaticBody2D
 @onready var tree_cut = $CutDown/TreeCut
 @onready var right_cast = $RightCast
 @onready var left_cast = $LeftCast
+@onready var delay = $Delay
 
 var currstage = 0
 var totalHits = 4
 var canChop = false
 var dead = false
 var isGrown = false
-
+var timerDone = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,11 +64,22 @@ func animateStage(currStage):
 
 func on_chop():
 	#print(\"we want to chop!\")
+	#delay.start()
 	if !dead and isGrown:
+		
 #print(\"chopped down!\")
-		totalHits -= 1
+		#if timerDone:
+		print(totalHits)
 		var dir = get_directions()
-		if totalHits == 0:
+		if totalHits > 0:
+			totalHits -= 1
+			if dir == -1:
+					animation_player.play(\"axeHitLeft\")
+			else:
+				animation_player.play(\"axeHitRight\")
+		#timerDone = false
+		#delay.stop()
+		else:
 			if dir == -1:
 				animation_player.play(\"CutDownLeft\")
 			else:
@@ -75,17 +87,14 @@ func on_chop():
 			#
 				dead = true
 				#become_stump()
-		else:
-			if dir == -1:
-				animation_player.play(\"axeHitLeft\")
-			else:
-				animation_player.play(\"axeHitRight\")
+			
 				
+			
 		
 func become_stump():
 	print(\"is stump\")
 	animation_player.play(\"Stump\")
-	totalHits = 4
+	#totalHits = 4
 	canChop = false
 
 
@@ -99,6 +108,11 @@ func _on_cut_down_body_entered(body):
 
 func _on_cut_down_body_exited(body):
 	canChop = false
+
+
+func _on_delay_timeout():
+	print(\"done\")
+	timerDone = true
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ixke"]
@@ -1469,3 +1483,8 @@ target_position = Vector2(179, 0)
 [node name="LeftCast" type="RayCast2D" parent="."]
 position = Vector2(-1, -19)
 target_position = Vector2(-177, 0)
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]

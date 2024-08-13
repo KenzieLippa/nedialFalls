@@ -61,3 +61,6 @@ func insertSlot(index, inventorySlot, slotType):
 	updated.emit()
 
 
+func swap_slots():
+	pass
+#might want to add in the possibility to swap the inventory row like stardew

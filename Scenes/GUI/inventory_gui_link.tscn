@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://duv8mkqlph114"]
+
+[ext_resource type="Script" path="res://Scenes/GUI/inventory_gui_link.gd" id="1_utupm"]
+[ext_resource type="Texture2D" uid="uid://ba7dxifqd3ste" path="res://Sprites/UI/SmileTextbox.png" id="2_uus5v"]
+[ext_resource type="Script" path="res://Scenes/GUI/Inventory.gd" id="3_2bb5q"]
+[ext_resource type="PackedScene" uid="uid://cu003h3xoi7ok" path="res://Scenes/GUI/Slot.tscn" id="4_bct4p"]
+[ext_resource type="PackedScene" uid="uid://brvf7torq4v05" path="res://Scripts/hotbarlink.tscn" id="5_mxnrx"]
+
+[node name="InventoryGui" type="Control"]
+custom_minimum_size = Vector2(2199, 967)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2199.0
+offset_bottom = 967.0
+script = ExtResource("1_utupm")
+
+[node name="InventoryWindow" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 2211.0
+offset_bottom = 944.0
+texture = ExtResource("2_uus5v")
+patch_margin_left = 29
+patch_margin_top = 29
+patch_margin_right = 30
+patch_margin_bottom = 32
+
+[node name="GridContainer" type="GridContainer" parent="InventoryWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1032.5
+offset_top = -417.0
+offset_right = 1053.5
+offset_bottom = 395.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 8
+script = ExtResource("3_2bb5q")
+
+[node name="Slot" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot3" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot4" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot5" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot6" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot7" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot8" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot9" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot10" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot11" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot12" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot13" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot14" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot15" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot16" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot17" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot18" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot19" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot20" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot21" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot22" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot23" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Slot24" parent="InventoryWindow/GridContainer" instance=ExtResource("4_bct4p")]
+layout_mode = 2
+
+[node name="Hotbar" parent="." instance=ExtResource("5_mxnrx")]
+layout_mode = 0

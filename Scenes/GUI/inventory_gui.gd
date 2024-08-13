@@ -183,3 +183,59 @@ func _input(event):
 	if itemInHand && !locked && Input.is_action_just_pressed("rightClick"):
 		putItemBack()
 	updateItemInHand()
+	
+	if Input.is_action_just_pressed("swap inventory"):
+		print("swap rows")
+		for slot in hotbar_slots:
+			if slot.itemStackGui != null:
+				print(slot.itemStackGui.inventorySlot.item.name)
+				swap_inventory_rows()
+				
+func swap_inventory_rows():
+	var row_count = 3
+	
+# store the current hotbar slots
+	var curr_hot = []
+	for slot in hotbar_slots:
+		curr_hot.append(slot.takeItem() if slot.itemStackGui else null)
+		
+#move the first row to the hotbar
+	for i in range(hotbar_slots.size()):
+		var inventory_slot = slots[i]
+		var hotbar = hotbar_slots[i]
+		
+# move the item from the first row to the hotbar
+		if inventory_slot.itemStackGui:
+			hotbar.insert(inventory_slot.takeItem())
+		else:
+			if hotbar.itemStackGui:
+				hotbar.remove_child(hotbar.ItemStackGui)
+				hotbar.itemStackGui.queue_free()
+				hotbar.itemStackGui = null
+#move the esecond row to the first row
+	for i in range(hotbar_slots.size()):
+		var inventory_slot = slots[i]
+		var second_row_slot = slots[i + hotbar_slots.size()]
+		
+#move the item from the second row to the first row
+		if second_row_slot.itemStackGui:
+			inventory_slot.insert(second_row_slot.takeItem())
+		else:
+			if inventory_slot.itemStackGui:
+				inventory_slot.remove_child(inventory_slot.itemStackGui)
+				second_row_slot.itemStackGui.queue_free()
+				second_row_slot.itemStackGui = null
+				
+	for i in range(hotbar_slots.size()):
+		var third_row_slot = slots[i+hotbar_slots.size()*2]
+		
+		if curr_hot[i]:
+			third_row_slot.insert(curr_hot[i])
+		else:
+			if third_row_slot.itemStackGui:
+				third_row_slot.remove_child(third_row_slot.itemStackGui)
+				third_row_slot.itemStackGui.queue_free()
+				third_row_slot.itemStackGui = null
+	inventory.updated.emit()
+#will need to get all items in current row and add to their position
+				
