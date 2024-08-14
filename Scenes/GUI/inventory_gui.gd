@@ -192,6 +192,23 @@ func _input(event):
 			#if slot.itemStackGui != null:
 				#print(slot.itemStackGui.inventorySlot.item.name)
 		swap_inventory_rows()
+	
+	if Input.is_action_just_pressed("hotbar_1"):
+		onSlotClicked(hotbar_slots[0])
+	if Input.is_action_just_pressed("hotbar_2"):
+		onSlotClicked(hotbar_slots[1])
+	if Input.is_action_just_pressed("hotbar_3"):
+		onSlotClicked(hotbar_slots[2])
+	if Input.is_action_just_pressed("hotbar_4"):
+		onSlotClicked(hotbar_slots[3])
+	if Input.is_action_just_pressed("hotbar_5"):
+		onSlotClicked(hotbar_slots[4])
+	if Input.is_action_just_pressed("hotbar_6"):
+		onSlotClicked(hotbar_slots[5])
+	if Input.is_action_just_pressed("hotbar_7"):
+		onSlotClicked(hotbar_slots[6])
+	if Input.is_action_just_pressed("hotbar_8"):
+		onSlotClicked(hotbar_slots[7])
 				
 func swap_inventory_rows():
 	var row_size = hotbar_slots.size()
