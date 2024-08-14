@@ -138,6 +138,8 @@ func swapItems(slot):
 	itemInHand = tmpItem
 	add_child(itemInHand)
 	updateItemInHand()
+		
+	
 	
 func stackItems(slot):
 	var slotItem :ItemStackGui = slot.itemStackGui
@@ -186,56 +188,53 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("swap inventory"):
 		print("swap rows")
-		for slot in hotbar_slots:
-			if slot.itemStackGui != null:
-				print(slot.itemStackGui.inventorySlot.item.name)
-				swap_inventory_rows()
+		#for slot in hotbar_slots:
+			#if slot.itemStackGui != null:
+				#print(slot.itemStackGui.inventorySlot.item.name)
+		swap_inventory_rows()
 				
 func swap_inventory_rows():
-	var row_count = 3
+	var row_size = hotbar_slots.size()
 	
-# store the current hotbar slots
-	var curr_hot = []
+#init the rows
+	var tmp_hotbar = []
+	var row_one = []
+	var row_two = []
+	var row_three = []
+	
+#fill the rows with the corresponding slots
 	for slot in hotbar_slots:
-		curr_hot.append(slot.takeItem() if slot.itemStackGui else null)
+		tmp_hotbar.append(slot)
 		
-#move the first row to the hotbar
-	for i in range(hotbar_slots.size()):
-		var inventory_slot = slots[i]
-		var hotbar = hotbar_slots[i]
+	for i in range(row_size):
+		row_one.append(slots[i+row_size])
+		row_two.append(slots[i+row_size * 2])
+		row_three.append(slots[i+ row_size * 3])
 		
-# move the item from the first row to the hotbar
-		if inventory_slot.itemStackGui:
-			hotbar.insert(inventory_slot.takeItem())
-		else:
-			if hotbar.itemStackGui:
-				hotbar.remove_child(hotbar.ItemStackGui)
-				hotbar.itemStackGui.queue_free()
-				hotbar.itemStackGui = null
-#move the esecond row to the first row
-	for i in range(hotbar_slots.size()):
-		var inventory_slot = slots[i]
-		var second_row_slot = slots[i + hotbar_slots.size()]
-		
-#move the item from the second row to the first row
-		if second_row_slot.itemStackGui:
-			inventory_slot.insert(second_row_slot.takeItem())
-		else:
-			if inventory_slot.itemStackGui:
-				inventory_slot.remove_child(inventory_slot.itemStackGui)
-				second_row_slot.itemStackGui.queue_free()
-				second_row_slot.itemStackGui = null
-				
-	for i in range(hotbar_slots.size()):
-		var third_row_slot = slots[i+hotbar_slots.size()*2]
-		
-		if curr_hot[i]:
-			third_row_slot.insert(curr_hot[i])
-		else:
-			if third_row_slot.itemStackGui:
-				third_row_slot.remove_child(third_row_slot.itemStackGui)
-				third_row_slot.itemStackGui.queue_free()
-				third_row_slot.itemStackGui = null
-	inventory.updated.emit()
+	# store the items temporarily with null checks
+	var tmp_items_hotbar = []
+	var tmp_items_row_one = []
+	var tmp_items_row_two = []
+	var tmp_items_row_three = []
+	
+	for i in range(row_size):
+		tmp_items_hotbar.append(tmp_hotbar[i].takeItem() if tmp_hotbar[i].itemStackGui else null)
+		tmp_items_row_one.append(row_one[i].takeItem() if row_one[i].itemStackGui else null)
+		tmp_items_row_two.append(row_two[i].takeItem() if row_two[i].itemStackGui else null)
+		tmp_items_row_three.append(row_three[i].takeItem() if row_three[i].itemStackGui else null)
+#now we swap baby!
+	for i in range(row_size):
+		if tmp_items_row_three[i]:
+			#move from hotbar to three
+			tmp_hotbar[i].insert(tmp_items_row_three[i])
+		if tmp_items_row_two[i]:
+			row_three[i].insert(tmp_items_row_two[i])
+		if tmp_items_row_one[i]:
+			row_two[i].insert(tmp_items_row_one[i])
+		if tmp_items_hotbar[i]:
+			row_one[i].insert(tmp_items_hotbar[i])
+
+
+	
 #will need to get all items in current row and add to their position
 				

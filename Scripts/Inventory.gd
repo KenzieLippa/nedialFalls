@@ -44,7 +44,7 @@ func insert(item : InventoryItem, slotType):
 		if !emptySlots.is_empty():
 			emptySlots[0].item = item
 			emptySlots[0].amount = 1
-			
+	print("updated")	
 	updated.emit()
 
 func removeSlot(inventorySlot, slotType):

@@ -23,9 +23,9 @@ func insert(isg):
 	#reasons to not call
 	#isHotbar()
 	if is_instance_valid(parent_node):
-		
-		if !itemStackGui.inventorySlot || inventory.slots[index] == itemStackGui.inventorySlot: return
-		inventory.insertSlot(index, itemStackGui.inventorySlot, inventory.slots)
+		if itemStackGui:
+			if !itemStackGui.inventorySlot || inventory.slots[index] == itemStackGui.inventorySlot: return
+			inventory.insertSlot(index, itemStackGui.inventorySlot, inventory.slots)
 		
 
 
