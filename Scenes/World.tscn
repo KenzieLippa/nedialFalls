@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwerkrpyd6etf"]
+[gd_scene load_steps=13 format=3 uid="uid://dwerkrpyd6etf"]
 
 [ext_resource type="Script" path="res://Scenes/Test.gd" id="1_mtear"]
 [ext_resource type="PackedScene" uid="uid://boekd1lfk8atj" path="res://Scenes/testLevel.tscn" id="2_10rsf"]
@@ -10,17 +10,10 @@
 [ext_resource type="Script" path="res://Scenes/InfoBoxes.gd" id="5_xbct0"]
 [ext_resource type="PackedScene" uid="uid://c2ptfiyhygx1b" path="res://Scenes/Items/axe.tscn" id="8_wr47u"]
 [ext_resource type="PackedScene" uid="uid://cqt2wij1ymdg3" path="res://Scenes/TileMaps/grid_cursor.tscn" id="9_s1ak2"]
-[ext_resource type="Script" path="res://Scenes/DayNightCycle.gd" id="10_f83sl"]
+[ext_resource type="PackedScene" uid="uid://c1lc8ktef3b7t" path="res://DayNightFilter.tscn" id="11_lxjt8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4sgr"]
 size = Vector2(2202, 291)
-
-[sub_resource type="Gradient" id="Gradient_6prl6"]
-offsets = PackedFloat32Array(0, 0.110204, 0.183673, 0.283673, 0.369388, 0.516327, 1)
-colors = PackedColorArray(0.137602, 0.139589, 0.607101, 1, 0.315084, 0.325612, 0.764801, 1, 0.482686, 0.00216232, 0.746009, 1, 1, 0.464135, 0.814512, 1, 0.858641, 0.648354, 0.680136, 1, 0.967084, 0.881118, 0.876787, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_v1g8x"]
-gradient = SubResource("Gradient_6prl6")
 
 [node name="World" type="Node2D"]
 z_as_relative = false
@@ -59,6 +52,7 @@ position = Vector2(1314, 1323.5)
 shape = SubResource("RectangleShape2D_v4sgr")
 
 [node name="DayNightCycleUI" parent="GUI" instance=ExtResource("5_vsq3q")]
+mouse_filter = 2
 
 [node name="InfoBoxes" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -75,11 +69,7 @@ position = Vector2(-170, 438)
 
 [node name="GridCursor" parent="." instance=ExtResource("9_s1ak2")]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.247059, 0.27451, 0.447059, 1)
-script = ExtResource("10_f83sl")
-gradient = SubResource("GradientTexture1D_v1g8x")
-INITIAL_HOUR = 12
+[node name="CanvasModulate" parent="." instance=ExtResource("11_lxjt8")]
 
 [connection signal="closed" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="GUI/InventoryGui" to="GUI" method="_on_inventory_gui_opened"]

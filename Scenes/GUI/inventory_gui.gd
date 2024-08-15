@@ -193,6 +193,7 @@ func _input(event):
 				#print(slot.itemStackGui.inventorySlot.item.name)
 		swap_inventory_rows()
 	
+
 	if Input.is_action_just_pressed("hotbar_1"):
 		onSlotClicked(hotbar_slots[0])
 	if Input.is_action_just_pressed("hotbar_2"):
@@ -209,6 +210,8 @@ func _input(event):
 		onSlotClicked(hotbar_slots[6])
 	if Input.is_action_just_pressed("hotbar_8"):
 		onSlotClicked(hotbar_slots[7])
+		
+#TODO: fix the day night UI
 				
 func swap_inventory_rows():
 	var row_size = hotbar_slots.size()

@@ -1,8 +1,6 @@
-res://Scenes/GUI/Time and Weather/day_night_cycle_ui.tscn
-res://Scripts/playerInventory.tres
 res://Scenes/World.tscn
+res://Scripts/playerInventory.tres
 res://Scenes/Player/player.tscn
-res://DayNightCycleUI.gd
-res://Scenes/DayNightCycle.gd
-res://Scenes/Test.gd
+res://Scenes/GUI/Time and Weather/day_night_cycle_ui.tscn
 res://Scenes/world/door.tscn
+res://Scenes/GUI/inventory_gui.gd
