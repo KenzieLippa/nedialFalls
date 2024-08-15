@@ -7,6 +7,11 @@ var testRoom = preload("res://Scenes/inside.tscn").instantiate()
 var infoOpened = false
 @onready var grid_cursor = $GridCursor
 var overInventory = false
+var outside = true
+@onready var canvas_modulate = $CanvasModulate
+@onready var day_night_cycle_ui = $GUI/DayNightCycleUI
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#RedneringServer.set_default_clear_color(Color.BLACK)
@@ -14,6 +19,9 @@ func _ready():
 	MainInstances.gridCursor.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
+#connect for time
+	canvas_modulate.time_tick.connect(day_night_cycle_ui.set_daytime)
+	#canvas_modulate.time_tick.connect do one for sound machine as well?
 	#make sure not visible
 	internal_dialogue.visible = false
 
@@ -62,6 +70,8 @@ func changeLevel(door):
 		if found_doors == door: continue #if this is the same door we came out of then continue
 		#should figure out how to have multiple doors in a scene
 		player.global_position = found_doors.global_position
+		
+#TODO: REMOVE THE CANVAS MODULATE INDOORS!
 	pass
 
 #func unpause():
