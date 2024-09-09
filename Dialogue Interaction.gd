@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_multiline var infoText
+@export_multiline var infoText : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

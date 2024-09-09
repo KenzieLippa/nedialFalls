@@ -29,7 +29,3 @@ func update():
 	
 	namedItem.text = inventorySlot.item.name 
 	description.text = inventorySlot.item.description
-
-
-
-

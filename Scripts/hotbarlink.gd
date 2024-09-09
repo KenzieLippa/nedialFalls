@@ -14,4 +14,3 @@ func update():
 	for i in range(slots.size()):
 		var inventory_slot = inventory.slots[i]
 		slots[i].update_to_slot(inventory_slot)
-
